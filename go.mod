@@ -1,5 +1,5 @@
 module main.go
 
-go 1.18
+go 1.21
 
-require gocv.io/x/gocv v0.43.0 // indirect
+require gocv.io/x/gocv v0.43.0
