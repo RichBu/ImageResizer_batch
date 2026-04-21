@@ -42,14 +42,27 @@ func main() {
 		}
 
 		//see if it is contains .pptx
+		//hasPPTX := true
 		index := strings.Index(file.Name(), srchStr)
 		if index == -1 {
-			continue
+			//there is no pptx in the screen
+			index1b := strings.Index(file.Name(), "(")
+			index = index1b - 1
+			if index1b == -1 {
+				index1c := strings.Index(file.Name(), ".png")
+				index = index1c
+			}
+			//hasPPTX = false
 		}
 
 		namePart1 := file.Name()[0:index]
 		index2 := strings.Index(file.Name(), ".png")
-		namePart2 := file.Name()[index:index2]
+		namePart2 := ""
+		if index == index2 {
+			namePart2 = "0"
+		} else {
+			namePart2 = file.Name()[index:index2]
+		}
 		valStr1 := strings.ReplaceAll(namePart2, ".pptx", "")
 		valStr2 := strings.ReplaceAll(valStr1, "(", "")
 		valStr3 := strings.ReplaceAll(valStr2, ")", "")
